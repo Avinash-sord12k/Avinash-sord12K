@@ -17,8 +17,8 @@ window.onresize = () => {
                             particlePath = 50;
                         }
                         else {
-                            population = 100;
-                            particlePath = 100;
+                            population = 30;
+                            particlePath = 50;
                         }
                 }
 
