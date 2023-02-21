@@ -6,7 +6,7 @@ var cw = c.width = cParent.offsetWidth;
 var ch = c.height = cParent.offsetHeight;
 var canvasAlfa = 60;
 var population = 10;
-var particlePath = 100;
+var particlePath = 50;
 
 window.onresize = () => {
                         cw = c.width = cParent.offsetWidth;
