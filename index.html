@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avinash</title>
+    <link rel="stylesheet" href="css/style1.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="./scripts/scroll-out.js"></script>
+</head>
+<body>
+
+    <div class="scroll-indicator">
+      <svg>
+        <circle cx="25" cy="25" r="20" />
+        <circle id="scroll-indictor-circle" cx="25" cy="25" r="20" />
+      </svg>
+      <a href="#header" id="go-to-top"><i class="fa-solid fa-angle-down"></i></a>
+    </div>
+
+    <header id="header">
+        <div class="logo"><i class="fa-sharp fa-solid fa-star" id="star-logo"></i>Avinash</div>
+        <div class="menuBtn" id="menuBtn"><i class="fa-solid fa-bars"></i></div>
+        <ul class="items" id="nav-item-box">
+            <i class="fa-sharp fa-solid fa-xmark" id="nav-cross"></i>
+            <li class="nav-item">Me & Myself</li>
+            <li class="nav-item">Feed</li>
+            <li class="nav-item">Projects</li>
+            <li class="nav-item">Memories</li>
+        </ul>
+    </header>
+    <div class="content-heading">
+        
+        <canvas id="banner-canvas"></canvas>
+        <div class="banner">
+            <div id="my-image-wrap">
+                <img id="my-image" src="assets/images/me.png" alt="">
+            </div>
+        </div>
+
+        <div id="banner-heading">
+            <div class="heading">I'm <u id="my-name-heading">Avinash</u> Jha</div>
+            <div class="info">I'm a student and currently exploring the Computer science field.</div>
+            <div class="connections">
+                <a href="" class="href"><i class="fa-brands fa-twitter"></i> </a>
+                <a href="" class="href"><i class="fa-brands fa-instagram"></i> </a>
+                <a href="" class="href"><i class="fa-brands fa-linkedin-in"></i> </a>
+                <a href="" class="href"><i class="fa-brands fa-github"></i> </a>
+                <a href="" class="href"><i class="fa-brands fa-telegram"></i> </a>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="skills">
+          <h1>Current Skills</h1>
+          <section>
+
+            <div class="skill-card">
+              <div class="percent">
+                <svg>
+                  <circle cx="75" cy="75" r="70"/>
+                  <circle id="html-percent" cx="75" cy="75" r="70"/>
+                </svg>
+              </div>
+              <h3><i class="fa-brands fa-html5"></i>html</h3>
+            </div>
+
+            <div class="skill-card">
+              <div class="percent">
+                <svg>
+                  <circle cx="75" cy="75" r="70"/>
+                  <circle id="css-percent" cx="75" cy="75" r="70"/>
+                </svg>
+              </div>
+              <h3><i class="fa-brands fa-css3-alt"></i>css</h3>
+            </div>
+
+            <div class="skill-card">
+              <div class="percent">
+                <svg>
+                  <circle cx="75" cy="75" r="70"/>
+                  <circle id="js-percent" cx="75" cy="75" r="70"/>
+                </svg>
+              </div>
+              <h3><i class="fa-brands fa-square-js"></i>javascript</h3>
+            </div>
+            
+            <div class="skill-card">
+              <div class="percent">
+                <svg>
+                  <circle cx="75" cy="75" r="70"/>
+                  <circle id="py-percent" cx="75" cy="75" r="70"/>
+                </svg>
+              </div>
+              <h3><i class="fa-brands fa-python"></i>python</h3>
+            </div>
+            
+          </section>
+        </div>
+        <div class="hobbies"></div>
+        <div class="contact-me"></div>
+    </div>
+    <div class="footer">
+
+    </div>
+</body>
+<script src="scripts/script.js"></script>
+<script src="scripts/movingelectron.js"></script>
+<script>
+  ScrollOut({
+        targets: 'h2, h3, p, div'
+    })
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links
+  $("a").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+});
+</script>
+<style>
+#section1 {
+  height: 600px;
+  background-color: pink;
+}
+
+#section2 {
+  height: 600px;
+  background-color: yellow;
+}
+
+#section3 {
+    height: 600px;
+    background-color: aqua;
+}
+</style>
+</head>
+<body>
+
+<h1>Smooth Scroll</h1>
+
+<div class="main" id="section1">
+  <h2>Section 1</h2>
+  <p>Click on the link to see the "smooth" scrolling effect.</p>
+  <a href="#section2">Click Me to Smooth Scroll to Section 2 Below</a>
+  <p>Note: Remove the scroll-behavior property to remove smooth scrolling.</p>
+</div>
+
+<div class="main" id="section2">
+  <h2>Section 2</h2>
+  <a href="#section3">Click Me to Smooth Scroll to Section 3 below</a>
+</div>
+
+<div class="main" id="section3">
+    <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat delectus quisquam ab saepe expedita laborum sapiente odio sit, ut corporis veniam ipsam esse officiis eaque aut recusandae earum quia unde!
+    </p>
+    <a href="#section1" class="">Click Me to Smooth Scroll to Section 1 above</a>
+</div>
+
+</body>
+</html> -->

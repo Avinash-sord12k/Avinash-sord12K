@@ -1,0 +1,109 @@
+const cssRoot = document.querySelector(':root');
+
+
+var beautifulColors = ['#36f016', '#ecf000', '#07bde6', '#2BFF00'];
+var currentColor = beautifulColors[Math.floor(Math.random() * beautifulColors.length)];
+cssRoot.style.setProperty('--accent-color-2', currentColor);
+console.log('current-color: ' + currentColor);
+
+const accentColor = getComputedStyle(cssRoot).getPropertyValue('--accent-color-2');
+const backgroundColor = getComputedStyle(cssRoot).getPropertyValue('--accent-color-1'); 
+
+
+var skillsPercentage = {
+                        'html': 85,
+                        'css' : 90,
+                        'javascript' : 60,
+                        'python' : 70,
+                      }
+
+document.getElementById('html-percent').style.setProperty('--perc-value', skillsPercentage['html']);
+document.getElementById('css-percent').style.setProperty('--perc-value', skillsPercentage['css']);
+document.getElementById('js-percent').style.setProperty('--perc-value', skillsPercentage['javascript']);
+document.getElementById('py-percent').style.setProperty('--perc-value', skillsPercentage['python']);
+
+///////////////////////////////////
+// document.getElementById("html-percent").animate([
+//   // key frames
+//   { strokeDashOffset: '440'},
+//   { transform: 'rotate(90deg)'},
+//   { transformOrigin: 'right'}
+// ], {
+//   // sync options
+//   duration: 0,
+//   iterations: Infinity
+// });
+///////////////////////////////////
+
+var scrollIndicatorCircle = document.querySelector('#scroll-indictor-circle');
+
+window.addEventListener("scroll", (event) => {
+  let scroll = this.scrollY;
+  let body = document.querySelector('body');
+  amount = (Math.floor(scroll)/(body.offsetHeight - window.innerHeight));
+  amount = Math.floor(amount * 1000) / 1000;
+  // console.log(amount, window.innerHeight, body.offsetHeight, scroll);
+  scrollIndicatorCircle.style.strokeDashoffset = `${125 * amount}`;
+  });
+
+
+/////////////////////////////////////////////
+var menuBtn = document.getElementById('menuBtn');
+var crossBtn = document.getElementById('nav-cross');
+var navItemBox = document.getElementById('nav-item-box');
+var menuBtnStatus = 0;
+
+menuBtn.addEventListener('click', function() {
+      navItemBox.classList.toggle('active-nav-box');
+});
+crossBtn.addEventListener('click', function() {
+      navItemBox.classList.toggle('active-nav-box');
+});
+
+
+
+
+
+
+
+/////////////////////////////////
+function isInViewport(element) {
+  const rect = element.getBoundingClientRect();
+  op = (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth + 5 || document.documentElement.clientWidth + 5)
+  );
+  // console.log(op, [rect.top, 0], [rect.left, 0], [rect.bottom, window.innerHeight], [rect.right, window.innerWidth]);
+  return op;
+}
+
+
+$(document).ready(function(){
+    // Add smooth scrolling to all links
+    $("a").on('click', function(event) {
+  
+      // Make sure this.hash has a value before overriding default behavior
+      if (this.hash !== "") {
+        // Prevent default anchor click behavior
+        event.preventDefault();
+  
+        // Store hash
+        var hash = this.hash;
+  
+        // Using jQuery's animate() method to add smooth page scroll
+        // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+        $('html, body').animate({
+          scrollTop: $(hash).offset().top
+        }, 800, function(){
+     
+          // Add hash (#) to URL when done scrolling (default click behavior)
+          window.location.hash = hash;
+        });
+      } // End if
+    });
+  });
+
+
+

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrolling Stars</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: rgb(255, 255, 255);
+            height: clamp(100vh, 100vh, 1000vh);
+            padding-top: 50px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 25vh;
+        }
+        ::-webkit-scrollbar {
+            background-color: #ffffff18;
+        }
+        ::-webkit-scrollbar-track {
+            background-color: #000;
+        }
+        /* ::-webkit-scrollbar-track-piece {
+            background-color: rgb(255, 255, 255);
+        } */
+        ::-webkit-scrollbar-thumb {
+            background-color: rgb(147, 147, 147);
+            background: linear-gradient(to bottom, rgb(131, 151, 197) , rgb(0, 0, 0));
+            border-radius: 20px 20px 0 0;
+            display: none;
+        }
+        #canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #000000;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+        }
+        section {
+            position: relative;
+            background-color: transparent;
+            width: 50%;
+            color: white;
+            background-color: rgba(133, 133, 133, 0.152);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            z-index: 1;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            /* opacity: 0; */   
+        }
+        
+        section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            border-radius: 20px;
+            background: linear-gradient(to bottom right, #5d5bcb2c, #6d6bb740);
+            filter: blur(1px);
+           
+        }
+
+        section > h1, section > h5, section > p {
+            color: white;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+        }
+        h5 {
+            font-weight: 400;
+            font-size: 1em;
+        }
+        p {
+            margin-top: 30px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <section class="section">
+        <h1>Welcome To Space</h1>
+        <h5>Scroll To See The Effect.</h5>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi rem, exercitationem obcaecati autem, voluptas esse, delectus consectetur expedita illo praesentium suscipit! Ratione recusandae commodi voluptatum, sunt totam cupiditate eligendi eius repellat. Eveniet similique, magnam quisquam animi fuga earum consequuntur exercitationem esse fugiat laudantium blanditiis deserunt corrupti soluta distinctio qui ipsum? Consectetur officia amet facilis deserunt? Tempora sint qui iure quod nam quam voluptatem voluptate voluptas ullam atque repudiandae inventore excepturi, accusantium sequi dolorum voluptates harum ut quo iste porro hic molestias impedit. Laborum nesciunt ipsum consequatur architecto tenetur, sit quam delectus eius.</p>
+    </section>
+    <section class="section">
+        <h1>Welcome To Space</h1>
+        <h5>Scroll To See The Effect.</h5>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi rem, exercitationem obcaecati autem, voluptas esse, delectus consectetur expedita illo praesentium suscipit! Ratione recusandae commodi voluptatum, sunt totam cupiditate eligendi eius repellat. Eveniet similique, magnam quisquam animi fuga earum consequuntur exercitationem esse fugiat laudantium blanditiis deserunt corrupti soluta distinctio qui ipsum? Consectetur officia amet facilis deserunt? Tempora sint qui iure quod nam quam voluptatem voluptate voluptas ullam atque repudiandae inventore excepturi, accusantium sequi dolorum voluptates harum ut quo iste porro hic molestias impedit. Laborum nesciunt ipsum consequatur architecto tenetur, sit quam delectus eius.</p>
+    </section>
+    <section class="section">
+        <h1>Welcome To Space</h1>
+        <h5>Scroll To See The Effect.</h5>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi rem, exercitationem obcaecati autem, voluptas esse, delectus consectetur expedita illo praesentium suscipit! Ratione recusandae commodi voluptatum, sunt totam cupiditate eligendi eius repellat. Eveniet similique, magnam quisquam animi fuga earum consequuntur exercitationem esse fugiat laudantium blanditiis deserunt corrupti soluta distinctio qui ipsum? Consectetur officia amet facilis deserunt? Tempora sint qui iure quod nam quam voluptatem voluptate voluptas ullam atque repudiandae inventore excepturi, accusantium sequi dolorum voluptates harum ut quo iste porro hic molestias impedit. Laborum nesciunt ipsum consequatur architecto tenetur, sit quam delectus eius.</p>
+    </section>
+    <section class="section">
+        <h1>Welcome To Space</h1>
+        <h5>Scroll To See The Effect.</h5>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi rem, exercitationem obcaecati autem, voluptas esse, delectus consectetur expedita illo praesentium suscipit! Ratione recusandae commodi voluptatum, sunt totam cupiditate eligendi eius repellat. Eveniet similique, magnam quisquam animi fuga earum consequuntur exercitationem esse fugiat laudantium blanditiis deserunt corrupti soluta distinctio qui ipsum? Consectetur officia amet facilis deserunt? Tempora sint qui iure quod nam quam voluptatem voluptate voluptas ullam atque repudiandae inventore excepturi, accusantium sequi dolorum voluptates harum ut quo iste porro hic molestias impedit. Laborum nesciunt ipsum consequatur architecto tenetur, sit quam delectus eius.</p>
+    </section>
+    <section class="section">
+        <h1>Welcome To Space</h1>
+        <h5>Scroll To See The Effect.</h5>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi rem, exercitationem obcaecati autem, voluptas esse, delectus consectetur expedita illo praesentium suscipit! Ratione recusandae commodi voluptatum, sunt totam cupiditate eligendi eius repellat. Eveniet similique, magnam quisquam animi fuga earum consequuntur exercitationem esse fugiat laudantium blanditiis deserunt corrupti soluta distinctio qui ipsum? Consectetur officia amet facilis deserunt? Tempora sint qui iure quod nam quam voluptatem voluptate voluptas ullam atque repudiandae inventore excepturi, accusantium sequi dolorum voluptates harum ut quo iste porro hic molestias impedit. Laborum nesciunt ipsum consequatur architecto tenetur, sit quam delectus eius.</p>
+    </section>
+    <section class="section">
+        <h1>Welcome To Space</h1>
+        <h5>Scroll To See The Effect.</h5>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi rem, exercitationem obcaecati autem, voluptas esse, delectus consectetur expedita illo praesentium suscipit! Ratione recusandae commodi voluptatum, sunt totam cupiditate eligendi eius repellat. Eveniet similique, magnam quisquam animi fuga earum consequuntur exercitationem esse fugiat laudantium blanditiis deserunt corrupti soluta distinctio qui ipsum? Consectetur officia amet facilis deserunt? Tempora sint qui iure quod nam quam voluptatem voluptate voluptas ullam atque repudiandae inventore excepturi, accusantium sequi dolorum voluptates harum ut quo iste porro hic molestias impedit. Laborum nesciunt ipsum consequatur architecto tenetur, sit quam delectus eius.</p>
+    </section>
+    <section class="section">
+        <h1>Welcome To Space</h1>
+        <h5>Scroll To See The Effect.</h5>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi rem, exercitationem obcaecati autem, voluptas esse, delectus consectetur expedita illo praesentium suscipit! Ratione recusandae commodi voluptatum, sunt totam cupiditate eligendi eius repellat. Eveniet similique, magnam quisquam animi fuga earum consequuntur exercitationem esse fugiat laudantium blanditiis deserunt corrupti soluta distinctio qui ipsum? Consectetur officia amet facilis deserunt? Tempora sint qui iure quod nam quam voluptatem voluptate voluptas ullam atque repudiandae inventore excepturi, accusantium sequi dolorum voluptates harum ut quo iste porro hic molestias impedit. Laborum nesciunt ipsum consequatur architecto tenetur, sit quam delectus eius.</p>
+    </section>
+    <section class="section">
+        <h1>Welcome To Space</h1>
+        <h5>Scroll To See The Effect.</h5>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi rem, exercitationem obcaecati autem, voluptas esse, delectus consectetur expedita illo praesentium suscipit! Ratione recusandae commodi voluptatum, sunt totam cupiditate eligendi eius repellat. Eveniet similique, magnam quisquam animi fuga earum consequuntur exercitationem esse fugiat laudantium blanditiis deserunt corrupti soluta distinctio qui ipsum? Consectetur officia amet facilis deserunt? Tempora sint qui iure quod nam quam voluptatem voluptate voluptas ullam atque repudiandae inventore excepturi, accusantium sequi dolorum voluptates harum ut quo iste porro hic molestias impedit. Laborum nesciunt ipsum consequatur architecto tenetur, sit quam delectus eius.</p>
+    </section>
+    <section class="section">
+        <h1>Welcome To Space</h1>
+        <h5>Scroll To See The Effect.</h5>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi rem, exercitationem obcaecati autem, voluptas esse, delectus consectetur expedita illo praesentium suscipit! Ratione recusandae commodi voluptatum, sunt totam cupiditate eligendi eius repellat. Eveniet similique, magnam quisquam animi fuga earum consequuntur exercitationem esse fugiat laudantium blanditiis deserunt corrupti soluta distinctio qui ipsum? Consectetur officia amet facilis deserunt? Tempora sint qui iure quod nam quam voluptatem voluptate voluptas ullam atque repudiandae inventore excepturi, accusantium sequi dolorum voluptates harum ut quo iste porro hic molestias impedit. Laborum nesciunt ipsum consequatur architecto tenetur, sit quam delectus eius.</p>
+    </section>
+    <section class="section">
+        <h1>Welcome To Space</h1>
+        <h5>Scroll To See The Effect.</h5>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi rem, exercitationem obcaecati autem, voluptas esse, delectus consectetur expedita illo praesentium suscipit! Ratione recusandae commodi voluptatum, sunt totam cupiditate eligendi eius repellat. Eveniet similique, magnam quisquam animi fuga earum consequuntur exercitationem esse fugiat laudantium blanditiis deserunt corrupti soluta distinctio qui ipsum? Consectetur officia amet facilis deserunt? Tempora sint qui iure quod nam quam voluptatem voluptate voluptas ullam atque repudiandae inventore excepturi, accusantium sequi dolorum voluptates harum ut quo iste porro hic molestias impedit. Laborum nesciunt ipsum consequatur architecto tenetur, sit quam delectus eius.</p>
+    </section>
+    <section class="section">
+        <h1>Welcome To Space</h1>
+        <h5>Scroll To See The Effect.</h5>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi rem, exercitationem obcaecati autem, voluptas esse, delectus consectetur expedita illo praesentium suscipit! Ratione recusandae commodi voluptatum, sunt totam cupiditate eligendi eius repellat. Eveniet similique, magnam quisquam animi fuga earum consequuntur exercitationem esse fugiat laudantium blanditiis deserunt corrupti soluta distinctio qui ipsum? Consectetur officia amet facilis deserunt? Tempora sint qui iure quod nam quam voluptatem voluptate voluptas ullam atque repudiandae inventore excepturi, accusantium sequi dolorum voluptates harum ut quo iste porro hic molestias impedit. Laborum nesciunt ipsum consequatur architecto tenetur, sit quam delectus eius.</p>
+    </section>
+    <section class="section">
+        <h1>Welcome To Space</h1>
+        <h5>Scroll To See The Effect.</h5>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi rem, exercitationem obcaecati autem, voluptas esse, delectus consectetur expedita illo praesentium suscipit! Ratione recusandae commodi voluptatum, sunt totam cupiditate eligendi eius repellat. Eveniet similique, magnam quisquam animi fuga earum consequuntur exercitationem esse fugiat laudantium blanditiis deserunt corrupti soluta distinctio qui ipsum? Consectetur officia amet facilis deserunt? Tempora sint qui iure quod nam quam voluptatem voluptate voluptas ullam atque repudiandae inventore excepturi, accusantium sequi dolorum voluptates harum ut quo iste porro hic molestias impedit. Laborum nesciunt ipsum consequatur architecto tenetur, sit quam delectus eius.</p>
+    </section>
+    <section class="section">
+        <h1>Welcome To Space</h1>
+        <h5>Scroll To See The Effect.</h5>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi rem, exercitationem obcaecati autem, voluptas esse, delectus consectetur expedita illo praesentium suscipit! Ratione recusandae commodi voluptatum, sunt totam cupiditate eligendi eius repellat. Eveniet similique, magnam quisquam animi fuga earum consequuntur exercitationem esse fugiat laudantium blanditiis deserunt corrupti soluta distinctio qui ipsum? Consectetur officia amet facilis deserunt? Tempora sint qui iure quod nam quam voluptatem voluptate voluptas ullam atque repudiandae inventore excepturi, accusantium sequi dolorum voluptates harum ut quo iste porro hic molestias impedit. Laborum nesciunt ipsum consequatur architecto tenetur, sit quam delectus eius.</p>
+    </section>
+    <section class="section">
+        <h1>Welcome To Space</h1>
+        <h5>Scroll To See The Effect.</h5>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi rem, exercitationem obcaecati autem, voluptas esse, delectus consectetur expedita illo praesentium suscipit! Ratione recusandae commodi voluptatum, sunt totam cupiditate eligendi eius repellat. Eveniet similique, magnam quisquam animi fuga earum consequuntur exercitationem esse fugiat laudantium blanditiis deserunt corrupti soluta distinctio qui ipsum? Consectetur officia amet facilis deserunt? Tempora sint qui iure quod nam quam voluptatem voluptate voluptas ullam atque repudiandae inventore excepturi, accusantium sequi dolorum voluptates harum ut quo iste porro hic molestias impedit. Laborum nesciunt ipsum consequatur architecto tenetur, sit quam delectus eius.</p>
+    </section>
+    <section class="section">
+        <h1>Welcome To Space</h1>
+        <h5>Scroll To See The Effect.</h5>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi rem, exercitationem obcaecati autem, voluptas esse, delectus consectetur expedita illo praesentium suscipit! Ratione recusandae commodi voluptatum, sunt totam cupiditate eligendi eius repellat. Eveniet similique, magnam quisquam animi fuga earum consequuntur exercitationem esse fugiat laudantium blanditiis deserunt corrupti soluta distinctio qui ipsum? Consectetur officia amet facilis deserunt? Tempora sint qui iure quod nam quam voluptatem voluptate voluptas ullam atque repudiandae inventore excepturi, accusantium sequi dolorum voluptates harum ut quo iste porro hic molestias impedit. Laborum nesciunt ipsum consequatur architecto tenetur, sit quam delectus eius.</p>
+    </section>
+
+</body>
+
+    <script>
+        var c = document.getElementById('canvas');
+        var ctx = c.getContext('2d');
+        var width, height, scrollAmountX, scrollAmountY, oldScrollAmountX, oldScrollAmountY, scrollDirectionX, scrollDirectionY, starPopulation;
+
+        starPopulation = 10;
+        
+        var stars = [];
+
+
+        scrollAmountX = 1;
+        scrollAmountY = 1;
+        oldScrollAmountX = 0;
+        oldScrollAmountY = 0;
+
+        onresize = resizeRefresh;
+
+
+        resizeRefresh();
+        scrollRefresh();
+        // remakeStars(width, height);
+
+
+
+        function resizeRefresh() {
+            width = c.width = window.innerWidth;
+            height = c.height = window.innerHeight;
+            remakeStars(width, height);
+        }
+
+        function scrollRefresh() {
+            scrollAmountX = window.scrollX;
+            scrollAmountY = window.scrollY;
+
+            (scrollAmountX - oldScrollAmountX === 0) ? (scrollDirectionX = 0) : (scrollDirectionX = Math.sign(oldScrollAmountX - scrollAmountX));
+            (scrollAmountY - oldScrollAmountY === 0) ? (scrollDirectionY = 0) : (scrollDirectionY = Math.sign(oldScrollAmountY - scrollAmountY));
+
+            oldScrollAmountX = scrollAmountX;
+            oldScrollAmountY = scrollAmountY;
+        }
+
+
+
+        function Star(x, y, zDistance) {
+            this.x = x;
+            this.y = y;
+            this.vx = 0;
+            this.vy = 1;
+            this.distance = zDistance;
+            this.size = 100/(this.distance)**2;
+            this.initialPhase = Math.PI * Math.random();
+            this.angularFreq = (Math.PI / 180) * (20 / (zDistance)**2);
+            this.auraSize = (this.size + 10) * Math.abs(Math.sin(this.initialPhase));
+
+            this.update = (sx = 0, sy) => {
+                dx = this.vx * sx;
+                dy = this.vy * sy * 100000/(((this.distance)**2) * Math.abs(this.y + 50));
+                this.x += sx;
+                this.y += dy;
+
+                this.initialPhase += this.angularFreq;
+
+                // console.log(dy, sy, this.y);
+
+                if ((this.x > width)) this.x = 0;
+                else if ((this.x < 0)) this.x = width;
+                if (this.y > height) this.y = 0;
+                else if (this.y < 0) this.y = height;
+            }
+            this.draw = () => {
+
+                ctx.beginPath();
+                // ctx.shadowColor = '#fff';
+                // ctx.shadowBlur = 10;
+                // ctx.shadowOffsetX = ctx.shadowOffsetY = 0;
+                ctx.fillStyle = '#ffffff10';
+                this.auraSize = (this.size + 5) * Math.abs(Math.sin(this.initialPhase)) + 5;
+                ctx.arc(this.x, this.y, this.auraSize + 8, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.fillStyle = '#88888830';
+                ctx.arc(this.x, this.y, this.auraSize , 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.fillStyle = '#ffffff80';
+                ctx.arc(this.x, this.y, this.size + 2, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.fillStyle = '#fff';
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        
+
+        
+        function remakeStars(x, y) {
+            stars = [];
+            while (stars.length < starPopulation) {
+            let star = new Star( Math.floor(Math.random() * x), Math.floor(Math.random() * y), (Math.random() * 5) + 5);
+            stars.push(star);
+            }
+        }
+
+        function refillStars(x, y) {
+            while (stars.length < starPopulation) {
+                let star = new Star( Math.floor(Math.random() * x), Math.floor(Math.random() * y), (Math.random() * 5) + 5);
+                stars.push(star);
+            }
+        }
+
+
+        function run() {
+
+            ctx.fillStyle = '#000000';
+            ctx.fillRect(0, 0, width, height);
+
+            // star refresh loop
+            for (i of stars) {
+                i.update(0, scrollDirectionY);
+                i.draw();
+            }
+
+            scrollRefresh();
+            requestAnimationFrame(run);
+        }
+
+        run();
+
+
+    </script>
+
+</html>

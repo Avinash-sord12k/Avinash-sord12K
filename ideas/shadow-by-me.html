@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shadow by gaz</title>
+    <style>
+
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        canvas {
+            background-color: black;
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+</body>
+<script>
+    var canvas = document.getElementById('canvas');
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+    ctx = canvas.getContext('2d');
+    var lightSource = [canvas.width/2, canvas.height/2];
+    ctx.arc(lightSource[0], lightSource[1], 10, 0, 2 * Math.PI);
+    // ctx.moveTo(0, 0);
+    // ctx.lineTo(100, 100);
+    // ctx.strokeStyle = '#fff';
+    // ctx.stroke();
+
+    function Box(x, y) {
+        this.x = x;
+        this.y = y;
+        this.v = [0, Math.random()+1];
+        this.a = [0, 0];
+        this.height = 100;
+        this.width = 100;
+        this.sPoints = [];
+        this.shadowLength = 200;
+        this.vertices = [[this.x, this.y], [this.x+this.width, this.y], [this.x+this.width, this.y+this.height], [this.x, this.y+this.height]];
+        this.quadPos = [Math.sign(this.x-lightSource[0]), Math.sign(this.y-lightSource[1])];
+
+        this.generateShadowPoints = function() {
+            this.sPoints = [];
+            this.quadPos = [Math.sign(this.x-lightSource[0]), Math.sign(this.y-lightSource[1])];
+
+            switch (this.quadPos) {
+                case [1, 1]:
+                    this.vertices = [[this.x, this.y],
+                                    [this.x+this.width, this.y+this.height],
+                                    [this.x, this.y+this.height]];
+                    break;
+                case [1, -1]:
+                    this.vertices = [[this.x+this.width, this.y],
+                                    [this.x+this.width, this.y+this.height],
+                                    [this.x, this.y+this.height]];
+                    break;
+                case [-1, -1]:
+                    this.vertices = [[this.x, this.y],
+                                    [this.x+this.width, this.y],
+                                    [this.x+this.width, this.y+this.height]];
+                    break;
+                case [1, -1]:
+                    this.vertices = [[this.x, this.y],
+                                    [this.x+this.width, this.y],
+                                    [this.x, this.y+this.height]];
+                    break;
+            }
+
+            
+            for (let i=0; i<3; i++) {
+                slope = (this.vertices[i][1] - lightSource[1]) / (this.vertices[i][0] - lightSource[0]);
+                this.sPoints.push([this.vertices[i][0] + Math.sign(this.x-lightSource[0]) * this.shadowLength/Math.sqrt(1 + slope*slope),
+                                   this.vertices[i][1] + Math.sign(this.y-lightSource[1]) * this.shadowLength/Math.sqrt(1 + 1/(slope*slope)) ]);
+            }
+
+            Array.prototype.push.apply(this.sPoints, this.vertices);
+
+            
+        }
+
+        this.update = function() {
+            this.x += this.v[0];
+            this.y += this.v[1];
+            this.v[0] += this.a[0];
+            this.v[1] += this.a[1];
+
+            this.generateShadowPoints();
+        }
+        this.draw = function() {
+            
+            ctx.fillStyle = "#ff0000";
+            ctx.moveTo(this.sPoints[3][0], this.sPoints[3][1]);
+            for (i of this.sPoints) {
+                ctx.lineTo(i[0], i[1]);
+            }
+            ctx.fill();
+
+
+            ctx.fillStyle = '#fff';
+            ctx.fillRect(this.x, this.y, this.width, this.height)
+        }
+    }
+    entities = [];
+    for (let i=0; i<=1; i++) {
+        entities.push(new Box(Math.floor(Math.random() * canvas.width), Math.floor(Math.random() * canvas.height)));
+    }
+
+
+    function run() {
+
+        ctx.fillStyle = '#000000';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        entities = entities.filter((box) => {
+            return (box.y<canvas.height);
+        })
+        for (let i=0;i<2-entities.length; i++) {
+            entities.push(new Box(Math.floor(Math.random() * canvas.width), 0));
+        }
+        for (let i=0;i<entities.length; i++) {
+            console.log(entities[i].sPoints.length, entities[i].vertices.length, entities[i].quadPos);
+            entities[i].update();
+            entities[i].draw();
+        }
+        requestAnimationFrame(run);
+    }
+    run();
+
+
+
+
+</script>
+</html>

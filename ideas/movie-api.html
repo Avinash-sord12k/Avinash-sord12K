@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>movie api</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        width: 100%;
+        min-height: 100vh;
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    section#movies-container {
+        position: relative;
+        top: 0;
+        left: 0;
+        min-height: 100vh;
+        min-width: 100%;
+        background-color: #333;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        justify-items: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .movie-box {
+        position: relative;
+        top: 0;
+        left: 0;
+        height: fit-content;
+        width: 250px;
+        background-color: rgb(0, 0, 0);
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: column;
+        border-radius: 5px;
+        box-shadow: 0 0 10px black;
+    }
+
+    .movie-box:hover {
+        box-shadow: 0 0 15px black;
+    }
+
+    .cover-image-wrap {
+        position: relative;
+        width: 100%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .cover-image-wrap img {
+        width: 100%;
+    }
+
+    .small-details {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        color: white;
+        background-color: rgba(1, 34, 1, 0);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .small-details .duration {
+        margin: 0 0 0 8px;
+    }
+
+    .small-details .pegi {
+        margin: 0 8px 0 0;
+    }
+
+    .details {
+        display: flex;
+        align-items: left;
+        justify-content: flex-start;
+        flex-direction: column;
+        margin: 8px 8px;
+    }
+
+    .details .name {
+        margin: 10px 0 10px 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #ddd;
+        letter-spacing: 1px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+
+
+    .genre-box {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+        flex-direction: row;
+        margin-bottom: 25px;
+    }
+
+    .genre-box * {
+        color: white;
+    }
+
+    .plot {
+        color: white;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        height: 100px;
+        overflow-y: auto;
+    }
+
+    .plot::-webkit-scrollbar {
+        display: none;
+    }
+
+    .Action {
+        background-color: red;
+        border-radius: 8px;
+        padding: 1px 5px;
+    }
+
+    .Adventure {
+        background-color: rgb(70, 221, 0);
+        border-radius: 8px;
+        padding: 1px 5px;
+    }
+
+    .Horror {
+        background-color: rgb(0, 0, 0);
+        border-radius: 8px;
+        padding: 1px 5px;
+    }
+
+    .Drama {
+        background-color: rgb(255, 174, 0);
+        border-radius: 8px;
+        padding: 1px 5px;
+    }
+
+    .Sci-Fi {
+        background-color: #0d74eb;
+        border-radius: 8px;
+        padding: 1px 5px;
+    }
+
+    .Thriller {
+        background-color: #5f3207;
+        border-radius: 8px;
+        padding: 1px 5px;
+    }
+
+    .movie-options {
+        position: relative;
+        padding: 10px 0;
+        width: 100%;
+        color: white;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .movie-options * {
+        font-size: 1.4em;
+    }
+
+    .watch-btn,
+    .download-btn,
+    .share-btn {
+        color: #0d74eb;
+    }
+
+    .fa-star-o {
+        color: yellow;
+    }
+</style>
+
+<body>
+    <section id="movies-container">
+        <!-- <div class="movie-box" id="m-1">
+            <div class="cover-image-wrap">
+                <img class="cover-image" src="" alt="">
+                <div class="small-details"></div>
+            </div>
+            <div class="details">
+                <h3 class="name"></h3>
+                <div class="genre-box"></div>
+                <p class="plot"></p>
+            </div>
+        </div> -->
+    </section>
+</body>
+<script>
+    var apiKey = '4851bda6';
+    var index = 0;
+    var movieName = prompt('enter movie name');
+
+    fetch(`http://www.omdbapi.com/?apikey=${apiKey}&t=${movieName}`)
+        .then(response => response.json())
+        .then(data => {
+            // Do something with the data
+            console.log(data);
+            createMoviebox(data, index);
+            index++;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+
+
+    function createMoviebox(data, index) {
+        let movieBox = cele('div');
+        let coverImageWrap = cele('div');
+        let coverImage = cele('img');
+        let smallDetails = cele('div');
+        let duration = cele('div');
+        let pegi = cele('div');
+        let details = cele('div');
+        let name = cele('h3');
+        let rating = cele('span');
+        let genre = cele('div');
+        let plot = cele('p');
+        let option = cele('div');
+
+        movieBox.id = index;
+        movieBox.classList.add('movie-box');
+        coverImageWrap.classList.add('cover-image-wrap');
+        coverImage.classList.add('cover-image');
+        smallDetails.classList.add('small-details');
+        duration.classList.add('duration');
+        pegi.classList.add('pegi');
+        details.classList.add('details');
+        name.classList.add('name');
+        genre.classList.add('genre-box');
+        plot.classList.add('plot');
+        option.classList.add('movie-options');
+
+        coverImage.src = data['Poster'];
+
+        coverImage.addEventListener('error', () => errorList.push(index));
+
+
+        name.innerHTML = data['Title'] + '<i class="fa fa-star-o" aria-hidden="true"></i>' + data['imdbRating'];
+        plot.innerHTML = data['Plot'];
+        pegi.innerHTML = data['Rated'];
+        duration.innerHTML = data['Runtime'].split(' ')[0];
+        totalGenre = data['Genre'].split(', ');
+        genre_html = '';
+
+        for (_genre of totalGenre) {
+            _html = `<div class="${_genre}">${_genre}</div>\n`;
+            genre_html += _html;
+        }
+
+        option_html = '';
+
+        // option_html += "<div class=\"movie-options\">";
+        option_html += "<div class=\"watch-btn\"><i class=\"fa fa-play\" aria-hidden=\"true\"></i></div>";
+        option_html += "<div class=\"download-btn\"><i class=\"fa fa-download\" aria-hidden=\"true\"></i></div>";
+        option_html += "<div class=\"share-btn\"><i class=\"fa fa-share-alt\" aria-hidden=\"true\"></i></div>";
+
+
+        coverImageWrap.appendChild(coverImage);
+        smallDetails.appendChild(duration);
+        smallDetails.appendChild(pegi);
+        coverImageWrap.appendChild(smallDetails);
+        name.appendChild(rating);
+        genre.innerHTML = genre_html;
+        details.appendChild(name);
+        details.appendChild(genre);
+        details.appendChild(plot);
+        // details.appendChild()
+        option.innerHTML = option_html;
+
+        movieBox.appendChild(coverImageWrap);
+        movieBox.appendChild(details);
+        movieBox.appendChild(option);
+
+
+        document.getElementById('movies-container').appendChild(movieBox);
+
+
+
+    }
+
+
+
+    function cele(ele) {
+        return document.createElement(ele);
+    }
+
+</script>
+
+</html>

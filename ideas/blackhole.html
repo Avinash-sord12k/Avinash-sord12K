@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackhole</title>
+</head>
+<style>
+    * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: rgb(255, 255, 255);
+            height: clamp(100vh, 100vh, 1000vh);
+            padding-top: 50px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 25vh;
+        }
+        ::-webkit-scrollbar {
+            background-color: #ffffff18;
+        }
+        ::-webkit-scrollbar-track {
+            background-color: #000;
+        }
+        /* ::-webkit-scrollbar-track-piece {
+            background-color: rgb(255, 255, 255);
+        } */
+        ::-webkit-scrollbar-thumb {
+            background-color: rgb(147, 147, 147);
+            background: linear-gradient(to bottom, rgb(131, 151, 197) , rgb(0, 0, 0));
+            border-radius: 20px 20px 0 0;
+            display: none;
+        }
+        #canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #000000;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+        }
+</style>
+<body>
+    <canvas id="canvas"></canvas>
+</body>
+    <script>
+               var c = document.getElementById('canvas');
+        var ctx = c.getContext('2d');
+        var width, height, scrollAmountX, scrollAmountY, oldScrollAmountX, oldScrollAmountY, scrollDirection;
+
+        scrollAmountX = 1;
+        scrollAmountY = 1;
+        oldScrollAmountX = 0;
+        oldScrollAmountY = 0;
+
+        onresize = resizeRefresh;
+
+
+        resizeRefresh();
+
+        function resizeRefresh() {
+            width = c.width = window.innerWidth;
+            height = c.height = window.innerHeight;
+            // remakeStars(width, height);
+        }
+
+
+
+        function CosmicRay(bx, by, bangleX, bangleY) {
+            this.bx = bx;
+            this.by = by;
+            this.bsize = 2;
+            this.phase = 0;
+            this.bangleX = bangleX;
+            this.bangleY = bangleY;
+            this.x = 0;
+            this.y = 0;
+            this.color = '#fff';
+            this.dir = true;
+
+            this.draw = () => {
+                ctx.beginPath();
+                ctx.fillStyle = this.color;
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill()
+            }
+
+            this.update = () => {
+                if (this.dir) {
+                    this.x += 0;
+                    this.y += 0.0;
+                }else {
+                    this.x += 0;
+                    this.y -= 0.0;
+                }
+            }
+        }
+        function BlackholeParticle(bx, by, phase, bandWidth, colors, w, bsize, bangleX, bangleY, horizontalSkew) {
+            this.bx = bx;
+            this.by = by;
+            this.bsize = bsize;
+            this.phase = phase;
+            this.bangleX = bangleX;
+            this.bangleY = bangleY;
+            this.type = horizontalSkew;
+            this.r = this.bsize + Math.random() * bandWidth;
+            this.x = this.bx + Math.cos(this.phase) * this.r;
+            this.y = this.by + Math.sin(this.phase) * this.r;
+            this.quad = 0;
+
+            let colorIdx = Math.floor(((this.r - this.bsize)/bandWidth) * (colors.length) + 0);
+            this.color = colors[colorIdx];
+
+            this.size = 4;
+            this.angularVelocity = Math.random() * 2 * w * (Math.PI/180) * ((this.r - this.bsize)/bandWidth);
+
+
+            this.draw = () => {
+                ctx.beginPath()
+                ctx.fillStyle = this.color;
+                ctx.arc(this.x, this.y, this.size , 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            this.checkQuadrant = () => {
+                if ((this.x < this.bx) && (this.y < this.by)) this.quad = 2;
+                if ((this.x > this.bx) && (this.y < this.by)) this.quad = 1;
+                if ((this.x < this.bx) && (this.y > this.by)) this.quad = 3;
+                if ((this.x > this.bx) && (this.y > this.by)) this.quad = 4;
+                
+            }
+            this.update = () => {
+                this.x = this.bx + Math.cos(this.phase) * this.r  * Math.cos(this.bangleX);
+                if (horizontalSkew) {
+                    this.y = this.by + Math.sin(this.phase) * this.r * Math.cos(this.bangleY);
+                    if ((this.phase > 2.7 * Math.PI/2) && (this.phase < 3.3 * Math.PI/2)) this.phase = 3.35 * Math.PI/2;
+                    // if (this.phase > 3.35 * Math.PI/2) this.color = colors[colorIdx];
+                }
+                else {
+                    this.y = this.by + Math.sin(this.phase) * this.r;
+                    if ((this.quad == 4) || (this.quad == 3)) {
+                        this.phase = Math.PI ;
+                    }
+                }
+                this.checkQuadrant();
+                
+                this.phase += this.angularVelocity;
+                if (this.phase >= 2 * Math.PI) this.phase = 0;
+            }
+        }
+
+
+        function Blackhole(x, y, z, angleY, angleX) {
+            this.x = x;
+            this.y = y;
+            this.z = z;
+            this.angleY = angleY;
+            this.angleX = angleX;
+            this.size = 60;
+
+            this.particlePopulation = 100;
+            this.particles = [];
+            this.particlesBandWidth = 150;
+
+            this.vParticlePopulation = 50;
+            this.vParticles = [];
+            this.vParticlesBandWidth = 65;
+
+            this.cosmicParticlePolulation = 10;
+            this.cosmicParticles = [];
+            this.divergence = 10;
+            this.colors = ['#ffebd4', '#ffe066', '#ffda47', '#ffa947', '#ff951c', '#ff5512'];
+
+            this.colors = ['#f4fff1', '#df95db', '#ca76e2', '#311a80', '#130c28'];
+
+
+            this.fillParticles = () => {
+
+                // filling horizontal particles in array
+                for (let i=0; i<this.particlePopulation; i++) {
+                    let particle = new BlackholeParticle(this.x, this.y, 2 * Math.PI * Math.random(), this.particlesBandWidth, this.colors, 1,  this.size, this.angleX, this.angleY, true);
+                    this.particles.push(particle);
+                }
+                // filling vertical particels in array
+                for (let j=0; j<this.vParticlePopulation; j++) {
+                    let particle = new BlackholeParticle(this.x, this.y, 0, this.vParticlesBandWidth, this.colors, 1.5, this.size, this.angleX, this.angleY, false);
+                    this.vParticles.push(particle);
+                }
+                for (let k=0; k<this.cosmicParticlePolulation; k++) {
+                    let particle = new CosmicRay(this.x, this.y, this.angleX, this.angleY);
+                    this.cosmicParticles.push(particle);
+                }
+            }
+            this.fillParticles();
+
+            this.update = () => {
+            
+                for (particle of this.particles) {
+                    particle.update();
+                    particle.draw();
+                }
+                for (particle of this.vParticles) {
+                    particle.update();
+                    particle.draw();
+                }
+
+
+
+                ctx.beginPath();
+                ctx.fillStyle = 'black';
+                ctx.arc(this.x, this.y, this.size, Math.PI,2 * Math.PI);
+                ctx.fill();
+
+                for (particle of this.cosmicParticles) {
+                    particle.update();
+                    particle.draw();
+                }
+            
+        }
+        }
+
+        var b1 = new Blackhole(width/2, height/2, 5, Math.PI/2.5, 0);
+        
+        function run() {
+            ctx.fillStyle = '#00000000';
+            ctx.fillRect(0, 0, width, height);
+            b1.update();
+            requestAnimationFrame(run);
+        }
+
+
+run();
+
+
+    </script>
+</html>
