@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 30px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        #show {
+            font-size: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .loader {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            border-radius: 50%;
+            border: 10px solid lime;
+            border-top-color: white;
+            border-right-color: white;
+            border-left-color: white;
+            display: none;
+        }
+        .spin {
+            animation: rotate 1s linear infinite;
+        }
+        @keyframes rotate {
+            0% {
+                transform: rotate(0);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn btn-default">Fetch User</button>
+    <hr>
+    <div class="loader"></div>
+    <div id="show">
+    </div>
+</body>
+
+<script>
+    const button = document.querySelector("button");
+    const div = document.querySelector("#show");
+    const loader = document.querySelector('.loader');
+
+    const setText = (text) => {
+        div.textContent = text
+    }
+
+    const checkAuth = () => {
+        return new Promise((resolve, reject) => {
+            setText('Checking Auth...');
+            loader.style.display = 'block';
+            console.log(loader);
+            loader.classList.add('spin');
+            setTimeout(() => {
+                resolve(true);
+            }, 2000);
+        });
+    };
+
+    const fetchUser = () => {
+        return new Promise((resolve, reject) => {
+            setText('Fetching User...');
+            setTimeout(() => {
+                resolve({ name: "Max" });
+            }, 1000);
+        });
+    };
+
+    button.addEventListener("click", () => {
+        checkAuth()
+            .then(
+                isAuth => {
+                    if (isAuth) {
+                        return fetchUser()
+                    }
+                }
+            )
+            .then(
+                user => {
+                    setText(user.name);
+                    loader.style.display = 'none';
+                }
+            )
+    });
+</script>
+
+</html>

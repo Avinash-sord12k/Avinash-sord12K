@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>movie api</title>
 </head>
 
@@ -44,7 +45,7 @@
         left: 0;
         height: fit-content;
         width: 250px;
-        background-color: rgb(0, 0, 0);
+        background-color: rgb(60, 60, 60);
         display: flex;
         align-items: center;
         justify-content: flex-start;
@@ -194,10 +195,35 @@
     .fa-star-o {
         color: yellow;
     }
+    .loader {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            border-radius: 50%;
+            border: 10px solid lime;
+            border-top-color: white;
+            border-right-color: white;
+            border-left-color: white;
+            display: none;
+        }
+        .spin {
+            animation: rotate 1s linear infinite;
+        }
+        @keyframes rotate {
+            0% {
+                transform: rotate(0);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
 </style>
 
 <body>
     <section id="movies-container">
+
+        <div class="loader"></div>
+
         <!-- <div class="movie-box" id="m-1">
             <div class="cover-image-wrap">
                 <img class="cover-image" src="" alt="">
@@ -214,18 +240,25 @@
 <script>
     var apiKey = '4851bda6';
     var index = 0;
+    const loader = document.querySelector('.loader');
     var movieName = prompt('enter movie name');
+
+    loader.style.display = 'block';
+    loader.classList.add('spin');
 
     fetch(`http://www.omdbapi.com/?apikey=${apiKey}&t=${movieName}`)
         .then(response => response.json())
         .then(data => {
             // Do something with the data
             console.log(data);
+            loader.style.display = 'none';
             createMoviebox(data, index);
             index++;
         })
         .catch(error => {
             console.error('Error:', error);
+            loader.style.display = 'block';
+            loader.style.borderColor = 'red';
         });
 
 

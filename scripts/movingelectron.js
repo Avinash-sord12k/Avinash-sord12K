@@ -4,22 +4,14 @@ var ctx = c.getContext('2d');
 
 var cw = c.width = cParent.offsetWidth;
 var ch = c.height = cParent.offsetHeight;
-var canvasAlfa = 60;
-var population = 10;
+var canvasAlfa = 30;
+var population = 20;
 var particlePath = 50;
 
 window.onresize = () => {
                         cw = c.width = cParent.offsetWidth;
                         ch = c.height = cParent.offsetHeight;
                         particles.every(replaceParticles);
-                        if (window.innerWidth <= 1000) {
-                            population = 30;
-                            particlePath = 50;
-                        }
-                        else {
-                            population = 30;
-                            particlePath = 50;
-                        }
                 }
 
 var image_wrap = document.getElementById('my-image-wrap');
