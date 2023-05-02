@@ -15,12 +15,14 @@ var skillsPercentage = {
                         'css' : 90,
                         'javascript' : 60,
                         'python' : 70,
+                        'php' : 70,
                       }
 
 document.getElementById('html-percent').style.setProperty('--perc-value', skillsPercentage['html']);
 document.getElementById('css-percent').style.setProperty('--perc-value', skillsPercentage['css']);
 document.getElementById('js-percent').style.setProperty('--perc-value', skillsPercentage['javascript']);
 document.getElementById('py-percent').style.setProperty('--perc-value', skillsPercentage['python']);
+document.getElementById('php-percent').style.setProperty('--perc-value', skillsPercentage['php']);
 
 ///////////////////////////////////
 // document.getElementById("html-percent").animate([
