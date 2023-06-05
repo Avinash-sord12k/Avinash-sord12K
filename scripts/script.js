@@ -13,7 +13,7 @@ const backgroundColor = getComputedStyle(cssRoot).getPropertyValue('--accent-col
 var skillsPercentage = {
                         'html': 85,
                         'css' : 90,
-                        'javascript' : 60,
+                        'javascript' : 67,
                         'python' : 70,
                         'php' : 70,
                       }
@@ -105,6 +105,51 @@ $(document).ready(function(){
         });
       } // End if
     });
+
+    $(".project >*:not(.project-secondary-info)").click(function(){
+      //slide toggle the secondary info
+      $(this).parent().find(".project-secondary-info").slideToggle(500);
+    });
+
+    // scroll image in image gallery on pressing #left scroll button in it
+    // <div class="image-array">
+    //               <button class="left-scroll"><</button>
+    //               <button class="right-scroll">></button>
+    //               <img src="./assets/images/portfolio-page-1.png">
+    //               <img src="./assets/images/portfolio-page-2.png">
+    //               <img src="./assets/images/portfolio-page-3.png">
+    //               <img src="./assets/images/portfolio-page-1.png">
+    //               <img src="./assets/images/portfolio-page-2.png">
+    //               <img src="./assets/images/portfolio-page-3.png">
+    //               <img src="./assets/images/portfolio-page-1.png">
+    //               <img src="./assets/images/portfolio-page-2.png">
+    //               <img src="./assets/images/portfolio-page-3.png">
+    //               <img src="./assets/images/portfolio-page-1.png">
+    //               <img src="./assets/images/portfolio-page-2.png">
+    //               <img src="./assets/images/portfolio-page-3.png">
+    //             </div>
+    $(".right-scroll").click(function() {
+      var imageArray = $(this).siblings(".image-array");
+      var imageWidth = imageArray.find("img").eq(0).width();
+      var scrollAmount = imageWidth;
+      var maxScroll = imageArray.get(0).scrollWidth - imageArray.outerWidth();
+      
+      if (imageArray.scrollLeft() < maxScroll) {
+        imageArray.animate({ scrollLeft: '+=' + scrollAmount }, 500);
+      } else {
+        imageArray.animate({ scrollLeft: 0 }, 500); // Reset scroll to beginning
+      }
+    });
+    $(".left-scroll").click(function() {
+      var imageArray = $(this).siblings(".image-array");
+      var imageWidth = imageArray.find("img").eq(0).width();
+      var scrollAmount = imageWidth;
+      var maxScroll = imageArray.get(0).scrollWidth - imageArray.outerWidth();      
+      imageArray.animate({ scrollLeft: '-=' + scrollAmount }, 500);
+    });
+    
+    
+
   });
 
 

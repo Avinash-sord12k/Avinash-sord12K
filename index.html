@@ -1,248 +1,446 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+
+  <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible"
+      content="IE=edge">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
     <title>Avinash</title>
-    <link rel="stylesheet" href="css/style1.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet"
+      href="css/style1.css">
+    <link rel="preconnect"
+      href="https://fonts.googleapis.com">
+    <link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+      rel="stylesheet">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="./scripts/scroll-out.js"></script>
-</head>
-<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+      integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+
+  </head>
+
+  <body>
 
     <div class="scroll-indicator">
       <svg>
-        <circle cx="25" cy="25" r="20" />
-        <circle id="scroll-indictor-circle" cx="25" cy="25" r="20" />
+        <circle cx="25"
+          cy="25"
+          r="20" />
+        <circle id="scroll-indictor-circle"
+          cx="25"
+          cy="25"
+          r="20" />
       </svg>
-      <a href="#header" id="go-to-top"><i class="fa-solid fa-angle-down"></i></a>
+      <a href="#header"
+        id="go-to-top"><i class="fa-solid fa-angle-down"></i></a>
     </div>
 
     <header id="header">
-        <div class="logo"><i class="fa-sharp fa-solid fa-star" id="star-logo"></i>Avinash</div>
-        <div class="menuBtn" id="menuBtn"><i class="fa-solid fa-bars"></i></div>
-        <ul class="items" id="nav-item-box">
-            <i class="fa-sharp fa-solid fa-xmark" id="nav-cross"></i>
-            <li class="nav-item">My self</li>
-            <li class="nav-item">CV</li>
-            <li class="nav-item">Projects</li>
-            <li class="nav-item">Hobbies</li>
-        </ul>
+      <div class="logo"><i class="fa-sharp fa-solid fa-star"
+          id="star-logo"></i>Avinash</div>
+      <div class="menuBtn"
+        id="menuBtn"><i class="fa-solid fa-bars"></i></div>
+      <ul class="items active-nav-box"
+        id="nav-item-box">
+        <i class="fa-sharp fa-solid fa-xmark"
+          id="nav-cross"></i>
+        <li class="nav-item">My self</li>
+        <li class="nav-item">CV</li>
+        <li class="nav-item">Projects</li>
+        <li class="nav-item">Hobbies</li>
+      </ul>
     </header>
     <div class="content-heading">
-        
-        <canvas id="banner-canvas"></canvas>
-        <div class="banner">
-            <div id="my-image-wrap">
-                <img id="my-image" src="assets/images/me.png" alt="">
-            </div>
-        </div>
 
-        <div id="banner-heading">
-            <div class="heading">I'm <u id="my-name-heading">Avinash</u> Jha</div>
-            <div class="info">I'm a student and currently exploring the Computer science field.</div>
-            <div class="connections">
-                <a href="https://twitter.com/avinash2002a" class="href"><i class="fa-brands fa-twitter"></i> </a>
-                <a href="https://www.instagram.com/g0a0z/" class="href"><i class="fa-brands fa-instagram"></i> </a>
-                <a href="https://www.linkedin.com/in/avinash-jha-201459257/" class="href"><i class="fa-brands fa-linkedin-in"></i> </a>
-                <a href="https://github.com/Avinash-sord12k" class="href"><i class="fa-brands fa-github"></i> </a>
-                <a href="https://web.telegram.org/avinash2002a" class="href"><i class="fa-brands fa-telegram"></i></a>
-            </div>
+      <canvas id="banner-canvas"></canvas>
+      <div class="banner">
+        <div id="my-image-wrap">
+          <img id="my-image"
+            src="assets/images/me.png"
+            alt="">
         </div>
+      </div>
+
+      <div id="banner-heading">
+        <div class="heading">I'm <u id="my-name-heading">Avinash</u> Jha</div>
+        <div class="info">As an aspiring student in Computer Science, I'm actively exploring the field and documenting
+          my journey through this portfolio. Join me as I delve into coding, problem-solving, and project development,
+          embracing the limitless opportunities in the world of technology.</div>
+        <div class="connections">
+          <a href="https://twitter.com/avinash2002a"
+            class="href"><i class="fa-brands fa-twitter"></i> </a>
+          <a href="https://www.instagram.com/g0a0z/"
+            class="href"><i class="fa-brands fa-instagram"></i> </a>
+          <a href="https://www.linkedin.com/in/avinash-jha-201459257/"
+            class="href"><i class="fa-brands fa-linkedin-in"></i> </a>
+          <a href="https://github.com/Avinash-sord12k"
+            class="href"><i class="fa-brands fa-github"></i> </a>
+          <a href="https://web.telegram.org/avinash2002a"
+            class="href"><i class="fa-brands fa-telegram"></i></a>
+        </div>
+      </div>
     </div>
     <div class="content">
-        <div class="skills">
-          <h1>Current Skills</h1>
+      <div class="skills">
+        <h1>Current Skills</h1>
 
-          <section>
+        <section>
 
-            <div class="skill-card">
-              <div class="percent">
-                <svg>
-                  <circle cx="75" cy="75" r="70"/>
-                  <circle id="html-percent" cx="75" cy="75" r="70"/>
-                </svg>
-              </div>
-              <h3><i class="fa-brands fa-html5"></i>html</h3>
+          <div class="skill-card">
+            <div class="percent">
+              <svg>
+                <circle cx="75"
+                  cy="75"
+                  r="70" />
+                <circle id="html-percent"
+                  cx="75"
+                  cy="75"
+                  r="70" />
+              </svg>
             </div>
+            <h3><i class="fa-brands fa-html5"></i>html</h3>
+          </div>
 
-            <div class="skill-card">
-              <div class="percent">
-                <svg>
-                  <circle cx="75" cy="75" r="70"/>
-                  <circle id="css-percent" cx="75" cy="75" r="70"/>
-                </svg>
-              </div>
-              <h3><i class="fa-brands fa-css3-alt"></i>css</h3>
+          <div class="skill-card">
+            <div class="percent">
+              <svg>
+                <circle cx="75"
+                  cy="75"
+                  r="70" />
+                <circle id="css-percent"
+                  cx="75"
+                  cy="75"
+                  r="70" />
+              </svg>
             </div>
+            <h3><i class="fa-brands fa-css3-alt"></i>css</h3>
+          </div>
 
-            <div class="skill-card">
-              <div class="percent">
-                <svg>
-                  <circle cx="75" cy="75" r="70"/>
-                  <circle id="js-percent" cx="75" cy="75" r="70"/>
-                </svg>
-              </div>
-              <h3><i class="fa-brands fa-square-js"></i>javascript</h3>
+          <div class="skill-card">
+            <div class="percent">
+              <svg>
+                <circle cx="75"
+                  cy="75"
+                  r="70" />
+                <circle id="js-percent"
+                  cx="75"
+                  cy="75"
+                  r="70" />
+              </svg>
             </div>
-            
-            <div class="skill-card">
-              <div class="percent">
-                <svg>
-                  <circle cx="75" cy="75" r="70"/>
-                  <circle id="py-percent" cx="75" cy="75" r="70"/>
-                </svg>
-              </div>
-              <h3><i class="fa-brands fa-python"></i>python</h3>
+            <h3><i class="fa-brands fa-square-js"></i>javascript</h3>
+          </div>
+
+          <div class="skill-card">
+            <div class="percent">
+              <svg>
+                <circle cx="75"
+                  cy="75"
+                  r="70" />
+                <circle id="py-percent"
+                  cx="75"
+                  cy="75"
+                  r="70" />
+              </svg>
             </div>
-              
-              <div class="skill-card">
-              <div class="percent">
-                <svg>
-                  <circle cx="75" cy="75" r="70"/>
-                  <circle id="php-percent" cx="75" cy="75" r="70"/>
-                </svg>
-              </div>
-              <h3><i class="fa-brands fa-php"></i>php</h3>
+            <h3><i class="fa-brands fa-python"></i>python</h3>
+          </div>
+
+          <div class="skill-card">
+            <div class="percent">
+              <svg>
+                <circle cx="75"
+                  cy="75"
+                  r="70" />
+                <circle id="php-percent"
+                  cx="75"
+                  cy="75"
+                  r="70" />
+              </svg>
             </div>
-            
-          </section>
+            <h3><i class="fa-brands fa-php"></i>php</h3>
+          </div>
+
+        </section>
+      </div>
+      <div class="projects">
+        <h1>Projects</h1>
+        <div class="projects-container">
+
+
+          <div class="project">
+            <div class="row-1">
+              <div class="project-image">
+                <i class="fa fa-car" aria-hidden="true"></i>
+              </div>
+              <div class="project-name">
+                <h2>NN-reinforcement-with-GA</h2>
+              </div>
+            </div>
+            <div class="project-description row-2">
+              <p>This project trains cars to navigate tracks using a genetic algorithm. Through a neural network, cars improve over generations, while a track maker allows for customized challenges. The best car from each generation is saved, showcasing the evolution and potential of artificial intelligence.
+              </p>
+            </div>
+            <div class="project-secondary-info active">
+              <div class="tech-stack">
+                <h3>Tech Stack</h3>
+                <ul>
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>jQuery</li>
+                  <li>PHP</li>
+                  <li>MySql</li>
+                </ul>
+              </div>
+              <div class="more-project-items">
+                <div class="project-features">
+                  <h3>Functionality</h3>
+                  <ul>
+                    <li>
+                      <span class="project-feature-list-key">Genetic Algorithm: </span>
+                      <span class="project-feature-list-value">Utilizes a genetic algorithm for selection, reproduction, and improvement of cars.</span>
+                    </li>
+                    <li>
+                      <span class="project-feature-list-key">Neural Network Training: </span>
+                      <span class="project-feature-list-value">Trains cars using neural networks to enhance their driving abilities over time.</span>
+                    </li>
+                    <li>
+                      <span class="project-feature-list-key">Dynamic Track Generation: </span>
+                      <span class="project-feature-list-value">Enables users to create custom tracks for the cars to navigate, ensuring unique challenges for each training session.</span>
+                    </li>
+                    <li>
+                      <span class="project-feature-list-key">Evolutionary Progress: </span>
+                      <span class="project-feature-list-value">Saves the best-performing car from each generation, providing a visual representation of the cars' evolution and improvement.</span>
+                    </li>
+                    <li>
+                      <span class="project-feature-list-key">Track Replay: </span>
+                      <span class="project-feature-list-value">Allows users to replay and analyze the performance of the best car from each generation on any saved track.</span>
+                    </li>
+                    <li>
+                      <span class="project-feature-list-key">Responsive Interface: </span>
+                      <span class="project-feature-list-value">Ensures a responsive design that adapts seamlessly to different devices and screen sizes.</span>
+                    </li>
+                    <li>
+                      <span class="project-feature-list-key">Engaging Animations: </span>
+                      <span class="project-feature-list-value">Incorporates dynamic and engaging animations to enhance the user experience during car simulation.</span>
+                    </li>
+                    <li>
+                      <span class="project-feature-list-key">Smooth Scrolling: </span>
+                      <span class="project-feature-list-value">Provides smooth scrolling functionality for effortless navigation within the project interface.</span>
+                    </li>
+                    <li>
+                      <span class="project-feature-list-key">Customizable Settings: </span>
+                      <span class="project-feature-list-value">Allows users to customize the simulation settings, including the number of cars, the number of generations, and the speed of the simulation.</span>
+                    </li>
+                    <li>
+                      <span class="project-feature-list-key">Live link</span>
+                      <a class="project-feature-list-value">working on it</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="project-screen-shots">
+                <h3>Screen Shots</h3>
+                <div class="image-array-wrapper">
+                  <div class="image-array">
+                    <img src="./assets/images/portfolio-page-1.png">
+                  </div>
+                  <button class="left-scroll"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+                  <button class="right-scroll"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+                </div>
+              </div>
+              <div class="project-actions">
+                <a href="">View Code</a>
+                <a href="">Fork Project</a>
+                <a href="">Report Issue</a>
+                <a href="">Collaborate</a>
+              </div>
+            </div>
+          </div>
+          <div class="project">
+            <div class="row-1">
+              <div class="project-image">
+                <i class="fa fa-code" aria-hidden="true"></i>
+              </div>
+              <div class="project-name">
+                <h2>Portfolio Website</h2>
+              </div>
+            </div>
+            <div class="project-description row-2">
+              <p>My first project, a portfolio website. I used HTML, CSS, and JavaScript to build this website. I also
+                used ScrollOut.js to add some animations to the website.</p>
+            </div>
+            <div class="project-secondary-info active">
+              <div class="tech-stack">
+                <h3>Tech Stack</h3>
+                <ul>
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>jQuery</li>
+                  <li>ScrollOut.js</li>
+                </ul>
+              </div>
+              <div class="more-project-items">
+                <div class="project-features">
+                  <h3>Functionality</h3>
+                  <ul>
+                    <li>
+                      <span class="project-feature-list-key">Responsive: </span>
+                      <span class="project-feature-list-value">Designed to adapt and display properly across different
+                        devices and screen sizes.</span>
+                    </li>
+                    <li>
+                      <span class="project-feature-list-key">Animations: </span>
+                      <span class="project-feature-list-value">Dynamic and engaging animations to enhance the UX.</span>
+                    </li>
+                    <li>
+                      <span class="project-feature-list-key">Scrolling: </span>
+                      <span class="project-feature-list-value">Amooth scrolling functionality for effortless
+                        navigation.</span>
+                    </li>
+                    <li>
+                      <span class="project-feature-list-key">Live link: </span>
+                      <a class="project-feature-list-value"
+                        href="https://avinash-sord12k.github.io/">https://avinash-sord12k.github.io/</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="project-screen-shots">
+                <h3>Screen Shots</h3>
+                <div class="image-array-wrapper">
+                  <div class="image-array">
+                    <img src="./assets/images/portfolio-page-1.png">
+                    <img src="./assets/images/portfolio-page-2.png">
+                    <img src="./assets/images/portfolio-page-3.png">
+                    <img src="./assets/images/portfolio-page-1.png">
+                    <img src="./assets/images/portfolio-page-2.png">
+                    <img src="./assets/images/portfolio-page-3.png">
+                    <img src="./assets/images/portfolio-page-1.png">
+                    <img src="./assets/images/portfolio-page-2.png">
+                    <img src="./assets/images/portfolio-page-3.png">
+                    <img src="./assets/images/portfolio-page-1.png">
+                    <img src="./assets/images/portfolio-page-2.png">
+                    <img src="./assets/images/portfolio-page-3.png">
+                  </div>
+                  <button class="left-scroll"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+                  <button class="right-scroll"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+                </div>
+              </div>
+              <div class="project-actions">
+                <a href="">View Code</a>
+                <a href="">Fork Project</a>
+                <a href="">Report Issue</a>
+                <a href="">Collaborate</a>
+              </div>
+            </div>
+          </div>
+          <div class="project">
+            <div class="row-1">
+              <div class="project-image">
+                <i class="fa fa-code" aria-hidden="true"></i>
+              </div>
+              <div class="project-name">
+                <h2>Book Store management system</h2>
+              </div>
+            </div>
+            <div class="project-description row-2">
+              <p>A book store stock management app made with python tkinter. It is shop keeper focused application</p>
+            </div>
+            <div class="project-secondary-info active">
+              <div class="tech-stack">
+                <h3>Tech Stack</h3>
+                <ul>
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>jQuery</li>
+                  <li>ScrollOut.js</li>
+                </ul>
+              </div>
+              <div class="more-project-items">
+                <div class="project-features">
+                  <h3>Functionality</h3>
+                  <ul>
+                    <li>
+                      <span class="project-feature-list-key">Responsive: </span>
+                      <span class="project-feature-list-value">Designed to adapt and display properly across different
+                        devices and screen sizes.</span>
+                    </li>
+                    <li>
+                      <span class="project-feature-list-key">Animations: </span>
+                      <span class="project-feature-list-value">Dynamic and engaging animations to enhance the UX.</span>
+                    </li>
+                    <li>
+                      <span class="project-feature-list-key">Scrolling: </span>
+                      <span class="project-feature-list-value">Amooth scrolling functionality for effortless
+                        navigation.</span>
+                    </li>
+                    <li>
+                      <span class="project-feature-list-key">Live link: </span>
+                      <a class="project-feature-list-value"
+                        href="https://avinash-sord12k.github.io/">https://avinash-sord12k.github.io/</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="project-screen-shots">
+                <h3>Screen Shots</h3>
+                <div class="image-array-wrapper">
+                  <div class="image-array">
+                    <img src="./assets/images/portfolio-page-1.png">
+                    <img src="./assets/images/portfolio-page-2.png">
+                    <img src="./assets/images/portfolio-page-3.png">
+                    <img src="./assets/images/portfolio-page-1.png">
+                    <img src="./assets/images/portfolio-page-2.png">
+                    <img src="./assets/images/portfolio-page-3.png">
+                    <img src="./assets/images/portfolio-page-1.png">
+                    <img src="./assets/images/portfolio-page-2.png">
+                    <img src="./assets/images/portfolio-page-3.png">
+                    <img src="./assets/images/portfolio-page-1.png">
+                    <img src="./assets/images/portfolio-page-2.png">
+                    <img src="./assets/images/portfolio-page-3.png">
+                  </div>
+                  <button class="left-scroll"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+                  <button class="right-scroll"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+                </div>
+              </div>
+              <div class="project-actions">
+                <a href="">View Code</a>
+                <a href="">Fork Project</a>
+                <a href="">Report Issue</a>
+                <a href="">Collaborate</a>
+              </div>
+            </div>
+          </div>
+
         </div>
-        <div class="hobbies"></div>
-        <div class="contact-me"></div>
+      </div>
     </div>
-    <div class="footer">
+  </body>
+  <script src="scripts/script.js"></script>
+  <script src="scripts/movingelectron.js"></script>
+  <script>
+    ScrollOut({
+      targets: 'h2, h3, p, div'
+    });
 
-    </div>
-</body>
-<script src="scripts/script.js"></script>
-<script src="scripts/movingelectron.js"></script>
-<script>
-  ScrollOut({
-        targets: 'h2, h3, p, div'
-    })
-</script>
+  </script>
+
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <!DOCTYPE html>
-<html>
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-  // Add smooth scrolling to all links
-  $("a").on('click', function(event) {
-
-    // Make sure this.hash has a value before overriding default behavior
-    if (this.hash !== "") {
-      // Prevent default anchor click behavior
-      event.preventDefault();
-
-      // Store hash
-      var hash = this.hash;
-
-      // Using jQuery's animate() method to add smooth page scroll
-      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-      $('html, body').animate({
-        scrollTop: $(hash).offset().top
-      }, 800, function(){
-   
-        // Add hash (#) to URL when done scrolling (default click behavior)
-        window.location.hash = hash;
-      });
-    } // End if
-  });
-});
-</script>
-<style>
-#section1 {
-  height: 600px;
-  background-color: pink;
-}
-
-#section2 {
-  height: 600px;
-  background-color: yellow;
-}
-
-#section3 {
-    height: 600px;
-    background-color: aqua;
-}
-</style>
-</head>
-<body>
-
-<h1>Smooth Scroll</h1>
-
-<div class="main" id="section1">
-  <h2>Section 1</h2>
-  <p>Click on the link to see the "smooth" scrolling effect.</p>
-  <a href="#section2">Click Me to Smooth Scroll to Section 2 Below</a>
-  <p>Note: Remove the scroll-behavior property to remove smooth scrolling.</p>
-</div>
-
-<div class="main" id="section2">
-  <h2>Section 2</h2>
-  <a href="#section3">Click Me to Smooth Scroll to Section 3 below</a>
-</div>
-
-<div class="main" id="section3">
-    <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat delectus quisquam ab saepe expedita laborum sapiente odio sit, ut corporis veniam ipsam esse officiis eaque aut recusandae earum quia unde!
-    </p>
-    <a href="#section1" class="">Click Me to Smooth Scroll to Section 1 above</a>
-</div>
-
-</body>
-</html> -->
