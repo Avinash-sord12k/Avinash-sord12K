@@ -602,12 +602,12 @@ header {
     font-weight: 300;
 }
 a.project-feature-list-value {
-    color: var(--accent-color-2);
+    color: var(--text-dark);
     text-decoration: none;
     transition: 200ms ease-in;
 }
 a.project-feature-list-value:hover {
-    color: var(--accent-color-1);
+    color: var(--accent-color-2);
 }
 
 .project-screen-shots {
