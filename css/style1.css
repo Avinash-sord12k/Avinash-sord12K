@@ -848,6 +848,9 @@ a.project-feature-list-value:hover {
         min-width: 500px;
         max-width: 500px;
     }
+    #banner-heading {
+        padding: 0;
+    }
 }
 
 @media screen and (max-width: 600px) {
