@@ -111,23 +111,6 @@ $(document).ready(function(){
       $(this).parent().find(".project-secondary-info").slideToggle(500);
     });
 
-    // scroll image in image gallery on pressing #left scroll button in it
-    // <div class="image-array">
-    //               <button class="left-scroll"><</button>
-    //               <button class="right-scroll">></button>
-    //               <img src="./assets/images/portfolio-page-1.png">
-    //               <img src="./assets/images/portfolio-page-2.png">
-    //               <img src="./assets/images/portfolio-page-3.png">
-    //               <img src="./assets/images/portfolio-page-1.png">
-    //               <img src="./assets/images/portfolio-page-2.png">
-    //               <img src="./assets/images/portfolio-page-3.png">
-    //               <img src="./assets/images/portfolio-page-1.png">
-    //               <img src="./assets/images/portfolio-page-2.png">
-    //               <img src="./assets/images/portfolio-page-3.png">
-    //               <img src="./assets/images/portfolio-page-1.png">
-    //               <img src="./assets/images/portfolio-page-2.png">
-    //               <img src="./assets/images/portfolio-page-3.png">
-    //             </div>
     $(".right-scroll").click(function() {
       var imageArray = $(this).siblings(".image-array");
       var imageWidth = imageArray.find("img").eq(0).width();
